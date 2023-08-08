@@ -32,11 +32,11 @@ dicc_tables = {
 def connect():
     try:
         connection = psycopg2.connect(f"host={host} dbname={db_name} user={user} password={password} port = 5432")
-        print("+-----------Conectando-----------------+")
-        if connection.status == psycopg2.extensions.STATUS_READY:
-            print ("+--------------------------------------+")
-            print ("+-----------Conexion exitosa-----------+")
-            print ("+--------------------------------------+")
+        # print("+-----------Conectando-----------------+")
+        # if connection.status == psycopg2.extensions.STATUS_READY:
+        #     print ("+--------------------------------------+")
+        #     print ("+-----------Conexion exitosa-----------+")
+        #     print ("+--------------------------------------+")
 
     except psycopg2.Error as e:
         print(f"Error al conectar a la base de datos: '{e}'")

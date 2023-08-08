@@ -20,11 +20,14 @@ ProductListOfDict_ForEachID = []
 # --- Clases ---
 
 class Product:
-    def __init__(self, P_Name ,P_Color, P_Description, P_Date, Price, Stock = 0, DateRestock = None, Selled = 0, Id = "None"):
+    def __init__(self, P_Name ,P_Color, P_Category, P_Category_color, P_Color_code, P_Description, P_Date, Price, Stock = 0, DateRestock = None, Selled = 0, Id = "None"):
 
         self.Id  = Id
         self.P_Name = P_Name
         self.P_Color = P_Color
+        self.P_Category = P_Category
+        self.P_Category_Color = P_Category_color
+        self.P_Color_Code = P_Color_code
         self.P_Description = P_Description
         self.Price = Price
         self.Stock = Stock
@@ -33,7 +36,7 @@ class Product:
         self.Selled = Selled
 
     def __str__(self):
-        return f"Nombre: {self.P_Name} | Color: {self.P_Color} | Descripcion: {self.P_Description} | Fecha: {self.P_Date} | Precio: {self.Price} | Stock: {self.Stock} | Vendidos: {self.Selled} "
+        return f"Nombre: {self.P_Name} | Color: {self.P_Color} | Categoria: {self.P_Category} | Categoria de color: {self.P_Category_Color} | Codigo de color: {self.P_Color_Code} | Descripcion: {self.P_Description} | Fecha: {self.P_Date} | Precio: {self.Price} | Stock: {self.Stock} | Vendidos: {self.Selled} "
 
 
 # Clase hija "ProductPaint" de padre "Product"
@@ -45,7 +48,14 @@ class Product_Paint(Product):
         self.CategoryColor = CategoryColor
 
     def __str__(self):
-        return f"+{'-'*50}+\n Nombre: {self.P_Name} |\n Color: {self.P_Color} |\n Codigo color Hexadecimal: {self.ColorCode} |\n Categoria de color: {self.CategoryColor}|\n Descripcion: {self.P_Description} |\n Fecha: {self.P_Date} |\n Precio: {self.Price} |\n Stock: {self.Stock} |\n Vendidos: {self.Selled}\n+{'-'*50}+"
+        return f"+{'-'*50}+\n Nombre: {self.P_Name} |\n Color: {self.P_Color} |\n Categoria: {self.P_Category} |\n Categoria de color: {self.P_Category_Color} |\n Codigo de color: {self.P_Color_Code} |\n Codigo color Hexadecimal: {self.ColorCode} |\n Categoria de color: {self.CategoryColor}|\n Descripcion: {self.P_Description} |\n Fecha: {self.P_Date} |\n Precio: {self.Price} |\n Stock: {self.Stock} |\n Vendidos: {self.Selled}\n+{'-'*50}+"
+
+    def get_insert_paint_query(self):
+
+        # "name" varchar(100) , color varchar(60), category varchar (60), category_color varchar(60), color_code varchar(6),description varchar(300), price float, stock int, upload_date DATE, update_item_date DATE, date_restock DATE, items_sold int);
+
+        query = "INSERT INTO product (name,color,category,category_color,color_code,description,price,stock)"
+        values = (self.P_Name, self.P_Color, self.P_Category, self.P_Category_Color, self.P_Color_Code, self.ColorCode, self.P_Description, self.Price, self.Stock, self.P_Date)
 
 
 #   Clase para crear un USUARIO | - - - - COMING SOON - - - - |
