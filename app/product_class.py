@@ -50,9 +50,12 @@ class Product_Paint(Product):
     def __str__(self):
         return f"+{'-'*50}+\n Nombre: {self.P_Name} |\n Color: {self.P_Color} |\n Categoria: {self.P_Category} |\n Categoria de color: {self.P_Category_Color} |\n Codigo de color: {self.P_Color_Code} |\n Codigo color Hexadecimal: {self.ColorCode} |\n Categoria de color: {self.CategoryColor}|\n Descripcion: {self.P_Description} |\n Fecha: {self.P_Date} |\n Precio: {self.Price} |\n Stock: {self.Stock} |\n Vendidos: {self.Selled}\n+{'-'*50}+"
 
-    def get_insert_paint_query(self):
+    def get_insert_paint_query(self, option):
 
         # "name" varchar(100) , color varchar(60), category varchar (60), category_color varchar(60), color_code varchar(6),description varchar(300), price float, stock int, upload_date DATE, update_item_date DATE, date_restock DATE, items_sold int);
+        option = 1
+        if option == 1:
+            
 
         query = "INSERT INTO product (name,color,category,category_color,color_code,description,price,stock)"
         values = (self.P_Name, self.P_Color, self.P_Category, self.P_Category_Color, self.P_Color_Code, self.ColorCode, self.P_Description, self.Price, self.Stock, self.P_Date)
